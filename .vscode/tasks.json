@@ -5,11 +5,12 @@
             "label": "C/C++: cl.exe build active file",
             "command": "cl.exe",
             "args": [
-                "/Zi",
-                "/EHsc",
-                "/nologo",
-                "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                "-g", "-std=c++17",
+                "-I${workspaceFolder}/include",
+                "-L${workspaceFolder}/lib",
+                "src/*.cpp", "src/glad.c",
+                "-lglfw3", "-lopengl32", "-lgdi32", "-luser32", "-lshell32",
+                "-o", "${workspaceFolder}/main.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
