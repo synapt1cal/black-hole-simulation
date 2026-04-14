@@ -23,9 +23,49 @@ Built in C++ with OpenGL/GLFW. All physics is derived from first principles usin
   - [Key Phenomena](#key-phenomena)
     - [Time Dilation](#time-dilation)
     - [Gravitational Redshift](#gravitational-redshift)
-  - [Further Reading](#further-reading)
-    - [Math and Physics Explained](#math-and-physics-explained)
-    - [Development Journey](#development-journey)
-  - [About Me](#about-me)
-    - [Brief Introduction](#brief-introduction)
-    - [Personal Connection](#personal-connection)
+- [Further Reading](#further-reading)
+  - [Math and Physics Explained](#math-and-physics-explained)
+  - [Development Journey](#development-journey)
+- [About Me](#about-me)
+  - [Brief Introduction](#brief-introduction)
+  - [Personal Connection](#personal-connection)
+
+## Project Overview
+
+### The Mission
+
+### The Approach
+
+### Executive Summary
+
+### Video Demo
+
+## Quick Start
+
+### Installation
+
+### Running the Simulation
+
+## Scientific Background
+
+### Relativity 101
+
+### Mathematical Framework
+
+### Key Phenomena
+
+#### Time Dilation
+
+#### Gravitational Redshift
+
+## Further Reading
+
+### Math and Physics Explained
+
+### Development Journey
+
+## About Me
+
+### Brief Introduction
+
+### Personal Connection
