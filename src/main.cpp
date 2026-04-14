@@ -9,14 +9,15 @@
 #include <iostream>
 using Clock = std::chrono::high_resolution_clock;
 
-int scale = 100; // When G=c=1, we will multiply by 100 to make the black hole visibly massive.
+int worldScale = 100; // When G=c=1, we will multiply by 100 to make the black hole visibly massive.
 
 struct Engine {
     GLFWwindow* window;
     int width = 800;
-    int height = 450;
-    float WIDTH = 1e11;
-    float HEIGHT = 5.625e10;
+    int height = 600;
+    float widthWorld = 1e11;
+    float heightWorld = 7.5e10;
+    bool glfwInitialized = false;
 
     Engine(int w = 800, int h = 600) : width(w), height(h) {
         if (!glfwInit()) {
@@ -24,14 +25,29 @@ struct Engine {
             exit(EXIT_FAILURE);
         }
 
-        window = glfwCreateWindow(width, height, "Simulation Engine", nullptr, nullptr);
+        glfwInitialized = true;
+
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+        window = glfwCreateWindow(width, height, "Simulation Engine", NULL, NULL);
         if (!window) {
             std::cerr << "Failed to create window" << std::endl;
-            glfwTerminate();
+            if (glfwInitialized) {
+                glfwTerminate();
+                glfwInitialized = false;
+            }
             exit(EXIT_FAILURE);
         }
 
         glfwMakeContextCurrent(window);
+
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+            std::cerr << "Failed to initialize GLAD" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+
         glViewport(0, 0, width, height);
     }
 
@@ -45,11 +61,14 @@ struct Engine {
     }
 
     ~Engine() {
-        glfwDestroyWindow(window);
-        glfwTerminate();
+        if (window) {
+            glfwDestroyWindow(window);
+        }
+        if (glfwInitialized) {
+            glfwTerminate();
+        }
     }
 };
-Engine engine;
 
 struct BlackHole {
     unsigned int VAO, VBO;
@@ -59,7 +78,7 @@ struct BlackHole {
     int vertexCount;
 
     BlackHole (glm::vec2 pos, double m) : position(pos), mass(m) {
-        r_s = (2 * mass) * scale; 
+        r_s = (2 * mass) * worldScale; 
         std::vector<glm::vec2> vertices;
         int segments = 72;
 
@@ -101,9 +120,9 @@ struct BlackHole {
     }
 };
 
-struct LightRay {
+// struct LightRay {
 
-};
+// };
 
 int main() {
     Engine engine(800, 600);
