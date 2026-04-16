@@ -1,10 +1,10 @@
 # Black Hole Simulation
 
 A real-time null geodesic integrator visualizing photon paths around a Schwarzschild black hole.
-Built in C++ with OpenGL/GLFW. All physics is derived from first principles using the Euler-Lagrange formalism.
+Built in Taichi Lang. All physics is derived from first principles using the Euler-Lagrange formalism.
 
 ![Status](https://img.shields.io/badge/Status%3A-Active-brightgreen?style=for-the-badge)
-![Langauge](https://img.shields.io/badge/Language%3A-C%2B%2B-blue?style=for-the-badge)
+![Langauge](https://img.shields.io/badge/Language%3A-Python-blue?style=for-the-badge)
 ![Physics](https://img.shields.io/badge/GR-Schwarzschild-orange?style=for-the-badge)
 
 ## Table of Contents
